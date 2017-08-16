@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <script src="../index.js"></script>
+    <script src="test.config.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+    mini.use(['test-sleep.js', 'test', 'text!test.html', 'css!test.css'], function (x, a, b) {
+      console.info(arguments);
+      if (b.split(' ')[0] === 'test') {
+        console.info('1. text loaded');
+        document.body.innerHTML = b;
+      }
+      // console.info(test);
+      setTimeout(function () {
+        console.info(getStyles(document.body).backgroundColor);
+      }, 10)
+    });
+    mini.use(['test2', 'text!test.html', 'css!test.css'], function (a, b) {
+      if (b === 'test') {
+        console.info('2. text loaded');
+      }
+      console.info(test);
+    });
+    </script>
+</body>
+
+</html>

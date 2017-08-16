@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <script src="/vendor/jquery-2.2.4.js"></script>
+    <script src="../index.js"></script>
+    <script src="test.config.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+    
+    define('define/f', function(){
+        return mini.extend({}, {
+            f: 1
+        })
+    });
+    define('define/d', ['define/f'], function(f){
+        // console.info(f);
+        return mini.extend({}, f, {
+            d: 1
+        })
+    });
+    var start = new Date();
+    mini.use(['define/c', 'text!test.css'], function (c, text) {
+        // mini.benchmark(start);
+        $('body').append(JSON.stringify(c));
+        $('body').append(text);
+    });
+    </script>
+</body>
+
+</html>
